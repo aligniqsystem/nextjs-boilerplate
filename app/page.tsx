@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main style={{ padding: "20px" }}>
-      <h1>Homepage ✅</h1>
+      <h1>Homepage Working ✅</h1>
 
       <a href="/members">
         <button style={{
