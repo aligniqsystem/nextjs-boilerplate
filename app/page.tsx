@@ -10,15 +10,22 @@ export default function Home() {
       fontFamily: "Inter, sans-serif"
     }}>
 
+      {/* HEADER */}
       <h1 style={{ fontSize: "28px", fontWeight: "bold" }}>
         AlignIQ System
       </h1>
+
+      {/* NAV */}
+      <div style={{ marginBottom: "20px", marginTop: "10px" }}>
+        <a href="/" style={{ marginRight: "15px", color: "#4ade80" }}>Home</a>
+        <a href="/results" style={{ color: "#4ade80" }}>Results</a>
+      </div>
 
       <p style={{ color: "#888", marginBottom: "20px" }}>
         Data-driven market insights
       </p>
 
-      {/* RECORD */}
+      {/* PERFORMANCE */}
       <div style={{
         backgroundColor: "#1a1a1a",
         padding: "20px",
@@ -63,10 +70,10 @@ export default function Home() {
         Unlock Today’s Signals
       </button>
 
-      {/* RESULTS */}
+      {/* RESULTS PREVIEW */}
       <h2 style={{ marginTop: "30px" }}>Recent Results</h2>
 
-      {data.results.map((day, i) => (
+      {data.results.slice(0, 2).map((day, i) => (
         <div key={i} style={{
           backgroundColor: "#1a1a1a",
           padding: "15px",
