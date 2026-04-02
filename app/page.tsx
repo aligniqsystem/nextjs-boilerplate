@@ -15,7 +15,7 @@ export default function Home() {
         AlignIQ System
       </h1>
 
-      {/* NAV */}
+      {/* NAVIGATION */}
       <div style={{ marginBottom: "20px", marginTop: "10px" }}>
         <a href="/" style={{ marginRight: "15px", color: "#4ade80" }}>Home</a>
         <a href="/results" style={{ color: "#4ade80" }}>Results</a>
@@ -38,37 +38,45 @@ export default function Home() {
         <p>ROI: {data.roi}</p>
       </div>
 
-      {/* TODAY */}
+      {/* TODAY'S SIGNALS */}
       <h2>Today’s Qualified Signals</h2>
 
-      {data.todaysPlays.map((play, index) => (
-        <div key={index} style={{
-          backgroundColor: "#1a1a1a",
-          padding: "15px",
-          borderRadius: "12px",
-          marginTop: "10px"
-        }}>
-          <p><strong>{play.matchup}</strong></p>
-          <p style={{ filter: "blur(6px)" }}>
-            Signal Locked
-          </p>
-          <p style={{ color: "#4ade80" }}>
-            ✅ Qualified
-          </p>
-        </div>
-      ))}
+      {data.todaysPlays.length === 0 ? (
+        <p style={{ color: "#888" }}>No qualified signals today</p>
+      ) : (
+        data.todaysPlays.map((play, index) => (
+          <div key={index} style={{
+            backgroundColor: "#1a1a1a",
+            padding: "15px",
+            borderRadius: "12px",
+            marginTop: "10px"
+          }}>
+            <p><strong>{play.matchup}</strong></p>
+            <p style={{ filter: "blur(6px)" }}>
+              Signal Locked
+            </p>
+            <p style={{ color: "#4ade80" }}>
+              ✅ Qualified
+            </p>
+          </div>
+        ))
+      )}
 
-      <button style={{
-        marginTop: "15px",
-        padding: "12px",
-        width: "100%",
-        backgroundColor: "#4ade80",
-        border: "none",
-        borderRadius: "8px",
-        fontWeight: "bold"
-      }}>
-        Unlock Today’s Signals
-      </button>
+      {/* PAYWALL BUTTON */}
+      <a href="/premium">
+        <button style={{
+          marginTop: "15px",
+          padding: "14px",
+          width: "100%",
+          backgroundColor: "#4ade80",
+          border: "none",
+          borderRadius: "8px",
+          fontWeight: "bold",
+          fontSize: "16px"
+        }}>
+          🔒 Unlock Today’s Signals
+        </button>
+      </a>
 
       {/* RESULTS PREVIEW */}
       <h2 style={{ marginTop: "30px" }}>Recent Results</h2>
