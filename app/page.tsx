@@ -1,3 +1,5 @@
+import { data } from "../data";
+
 export default function Home() {
   return (
     <main style={{
@@ -16,6 +18,7 @@ export default function Home() {
         Data-driven market insights
       </p>
 
+      {/* RECORD */}
       <div style={{
         backgroundColor: "#1a1a1a",
         padding: "20px",
@@ -23,27 +26,30 @@ export default function Home() {
         marginBottom: "30px"
       }}>
         <h2>Performance</h2>
-        <p>Record: 0–0</p>
-        <p>Win Rate: 0%</p>
-        <p>ROI: 0%</p>
+        <p>Record: {data.record}</p>
+        <p>Win Rate: {data.winRate}</p>
+        <p>ROI: {data.roi}</p>
       </div>
 
+      {/* TODAY */}
       <h2>Today’s Qualified Signals</h2>
 
-      <div style={{
-        backgroundColor: "#1a1a1a",
-        padding: "15px",
-        borderRadius: "12px",
-        marginTop: "10px"
-      }}>
-        <p><strong>Lakers vs Suns</strong></p>
-        <p style={{ filter: "blur(6px)" }}>
-          Spread: Lakers -4
-        </p>
-        <p style={{ color: "#4ade80" }}>
-          ✅ Qualified
-        </p>
-      </div>
+      {data.todaysPlays.map((play, index) => (
+        <div key={index} style={{
+          backgroundColor: "#1a1a1a",
+          padding: "15px",
+          borderRadius: "12px",
+          marginTop: "10px"
+        }}>
+          <p><strong>{play.matchup}</strong></p>
+          <p style={{ filter: "blur(6px)" }}>
+            Signal Locked
+          </p>
+          <p style={{ color: "#4ade80" }}>
+            ✅ Qualified
+          </p>
+        </div>
+      ))}
 
       <button style={{
         marginTop: "15px",
@@ -57,18 +63,25 @@ export default function Home() {
         Unlock Today’s Signals
       </button>
 
+      {/* RESULTS */}
       <h2 style={{ marginTop: "30px" }}>Recent Results</h2>
 
-      <div style={{
-        backgroundColor: "#1a1a1a",
-        padding: "15px",
-        borderRadius: "12px",
-        marginTop: "10px"
-      }}>
-        <p>April 1</p>
-        <p>Lakers vs Suns → 🔒 ✅</p>
-        <p>Celtics vs Heat → 🔒 ❌</p>
-      </div>
+      {data.results.map((day, i) => (
+        <div key={i} style={{
+          backgroundColor: "#1a1a1a",
+          padding: "15px",
+          borderRadius: "12px",
+          marginTop: "10px"
+        }}>
+          <p><strong>{day.date}</strong></p>
+
+          {day.games.map((game, j) => (
+            <p key={j}>
+              {game.matchup} → 🔒 {game.result === "win" ? "✅" : "❌"}
+            </p>
+          ))}
+        </div>
+      ))}
 
     </main>
   );
