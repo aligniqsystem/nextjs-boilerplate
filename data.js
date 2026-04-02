@@ -1,5 +1,5 @@
 export const data = {
-  record: "0-0",
+  record: "5-2",
   winRate: "0%",
   roi: "0%",
 
