@@ -6,7 +6,7 @@ export default function Home() {
       <a href="/members">
         <button style={{
           marginTop: "20px",
-          padding: "10px",
+          padding: "12px",
           fontSize: "16px"
         }}>
           Go to Members Page
